@@ -1,0 +1,87 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Sprites/ship.png" type="Texture" id=1]
+[ext_resource path="res://Laser.tscn" type="PackedScene" id=2]
+[ext_resource path="res://PlayerShip.gd" type="Script" id=3]
+[ext_resource path="res://Sprites/weapons/gun.png" type="Texture" id=4]
+[ext_resource path="res://gun_laser.gd" type="Script" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 47.721
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.859259, 1 )
+colors = PoolColorArray( 0.937255, 0.669991, 0, 0.890196, 0.937255, 0.0588235, 0.0588235, 0.219608, 1, 0, 0, 0.235294 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 0.648864 ), 0.0, 0.0, 0, 0, Vector2( 0.98871, 0.921591 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 2
+emission_box_extents = Vector3( 5.006, 10, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 12.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 41.5
+angular_velocity = 30.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 30.0
+scale = 25.43
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 18.2162, 10.4365 )
+
+[node name="player_ship" type="KinematicBody2D" groups=[
+"player",
+]]
+script = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="RayCast2D" parent="." instance=ExtResource( 2 )]
+position = Vector2( 47.199, 0 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Thrust_patricles" type="Particles2D" parent="."]
+position = Vector2( -50, -0.000181 )
+rotation = 1.5708
+amount = 20
+lifetime = 4.0
+speed_scale = 3.0
+local_coords = false
+process_material = SubResource( 6 )
+
+[node name="gun_laser" type="Area2D" parent="."]
+position = Vector2( 8, 30 )
+collision_layer = 0
+collision_mask = 0
+script = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="gun_laser"]
+visible = false
+scale = Vector2( 1.46816, 1 )
+shape = SubResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="gun_laser"]
+rotation = 1.5708
+scale = Vector2( 1.5, 1.2 )
+texture = ExtResource( 4 )

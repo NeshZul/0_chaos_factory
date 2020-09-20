@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/weapons/laser.png" type="Texture" id=1]
+[ext_resource path="res://bullet_laser.gd" type="Script" id=2]
+[ext_resource path="res://Sprites/weapons/151022__bubaproducer__laser-shot-silenced.wav" type="AudioStream" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.31601
+height = 6.40672
+
+[node name="bullet_laser" type="Area2D" groups=[
+"bullets",
+]]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 1.714, 3.745 )
+texture = ExtResource( 1 )
+
+[node name="life_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -12.543
+pitch_scale = 1.37
+[connection signal="area_entered" from="." to="." method="_on_bullet_laser_area_entered"]
+[connection signal="timeout" from="life_timer" to="." method="_on_Timer_timeout"]

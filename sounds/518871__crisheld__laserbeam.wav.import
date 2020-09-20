@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/518871__crisheld__laserbeam.wav-98f8487c7b72f49f555ecd7f6269423a.sample"
+
+[deps]
+
+source_file="res://sounds/518871__crisheld__laserbeam.wav"
+dest_files=[ "res://.import/518871__crisheld__laserbeam.wav-98f8487c7b72f49f555ecd7f6269423a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=true
+compress/mode=0

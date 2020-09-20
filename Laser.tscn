@@ -1,0 +1,98 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Laser.gd" type="Script" id=1]
+[ext_resource path="res://sounds/518871__crisheld__laserbeam.wav" type="AudioStream" id=2]
+
+[sub_resource type="Environment" id=1]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/3 = false
+glow_levels/5 = false
+glow_intensity = 0.63
+glow_strength = 1.58
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+adjustment_brightness = 2.58
+adjustment_contrast = 0.39
+adjustment_saturation = 2.23
+
+[sub_resource type="Gradient" id=2]
+offsets = PoolRealArray( 0, 0.985185 )
+colors = PoolColorArray( 0.902271, 1, 0.269531, 1, 0.992157, 0.341176, 0.0117647, 0.596078 )
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 12.26
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 103.45
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 8.0
+scale_random = 1.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=7]
+emission_shape = 1
+emission_sphere_radius = 6.0
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 107.07
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 204.02
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 8.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[node name="RayCast2D" type="RayCast2D"]
+enabled = true
+cast_to = Vector2( 1000, 0 )
+collide_with_areas = true
+script = ExtResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0, 0, 100, 0 )
+width = 5.0
+default_color = Color( 1, 0.184314, 0.184314, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource( 1 )
+
+[node name="Cast_start_particles" type="Particles2D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.5
+process_material = SubResource( 6 )
+
+[node name="Collision_particles" type="Particles2D" parent="."]
+emitting = false
+amount = 12
+lifetime = 0.2
+speed_scale = 5.0
+process_material = SubResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+volume_db = -1.236
+pitch_scale = 0.98
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

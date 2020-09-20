@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://asteroid.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/aster.png" type="Texture" id=2]
+[ext_resource path="res://explosion.tscn" type="PackedScene" id=3]
+[ext_resource path="res://sounds/343452__greenvwbeetle__boom-2.wav" type="AudioStream" id=4]
+
+[node name="asteroid" type="Area2D" groups=[
+"asteroids",
+]]
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( 72.5, -78.3, 72.5, -70.3, 89.5, -36.4, 89.5, -24, 85.3, -24, 68.4, 20, 64.7, 20, 13.8, 73, 4.7, 73, -56.5, 63.6, -56.5, 55.6, -81, -25, -74.2, -25, -64.2, -62, -58.4, -62, -30.5, -79.5, -30.5, -85.7 )
+
+[node name="Sprite" type="Sprite" parent="CollisionPolygon2D"]
+texture = ExtResource( 2 )
+
+[node name="explosion" parent="." instance=ExtResource( 3 )]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = 4.68
+pitch_scale = 0.8
+
+[node name="Label" type="Label" parent="."]
+margin_left = -71.0
+margin_top = -118.0
+margin_right = 71.0
+margin_bottom = -104.0
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

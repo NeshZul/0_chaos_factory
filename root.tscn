@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://rts_camera.gd" type="Script" id=1]
+[ext_resource path="res://root.gd" type="Script" id=2]
+[ext_resource path="res://Background.tscn" type="PackedScene" id=3]
+[ext_resource path="res://asteroid.tscn" type="PackedScene" id=4]
+[ext_resource path="res://HUD.gd" type="Script" id=5]
+[ext_resource path="res://portal.tscn" type="PackedScene" id=7]
+
+[node name="root" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" parent="." instance=ExtResource( 3 )]
+
+[node name="asteroid" parent="." instance=ExtResource( 4 )]
+position = Vector2( 139.249, 440.9 )
+
+[node name="asteroid2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 337.824, 745.407 )
+
+[node name="asteroid3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 398.281, 485.717 )
+
+[node name="asteroid4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 137.962, -433.708 )
+
+[node name="asteroid5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 492.724, -415.639 )
+
+[node name="asteroid6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 880.476, 348.246 )
+
+[node name="asteroid7" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2098.24, 966.349 )
+
+[node name="asteroid8" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2671.85, 806.44 )
+
+[node name="asteroid9" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2012.41, -84.4763 )
+
+[node name="asteroid10" parent="." instance=ExtResource( 4 )]
+position = Vector2( 2702.15, 69.0094 )
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource( 5 )
+
+[node name="delete" type="Button" parent="HUD"]
+margin_left = 27.3117
+margin_top = 14.3448
+margin_right = 148.312
+margin_bottom = 34.3448
+text = "Delete_ship"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="test_ship" type="Button" parent="HUD"]
+margin_left = 27.1526
+margin_top = 46.4591
+margin_right = 148.153
+margin_bottom = 66.4591
+rect_pivot_offset = Vector2( -329.059, 115.101 )
+text = "Test_ship"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="portal" type="Button" parent="HUD"]
+margin_left = 325.153
+margin_top = 12.4591
+margin_right = 446.153
+margin_bottom = 32.4591
+rect_pivot_offset = Vector2( -329.059, 115.101 )
+text = "portal"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="test_ship_2" type="Button" parent="HUD"]
+margin_left = 27.878
+margin_top = 82.6182
+margin_right = 148.878
+margin_bottom = 102.618
+text = "Test_ship_2"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="spawn_base_ship" type="Button" parent="HUD"]
+margin_left = 178.602
+margin_top = 13.6182
+margin_right = 299.602
+margin_bottom = 33.6182
+text = "Spawn_base_ship"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="rts_camera" type="Camera2D" parent="HUD"]
+position = Vector2( 515, 300 )
+current = true
+editor_draw_drag_margin = true
+script = ExtResource( 1 )
+
+[node name="Tween" type="Tween" parent="HUD/rts_camera"]
+
+[node name="portal" parent="." instance=ExtResource( 7 )]
+position = Vector2( 806.089, -128.854 )
+[connection signal="pressed" from="HUD/delete" to="HUD" method="_on_delete_pressed"]
+[connection signal="pressed" from="HUD/test_ship" to="HUD" method="_on_test_ship_pressed"]
+[connection signal="pressed" from="HUD/portal" to="." method="_on_portal_pressed"]
+[connection signal="pressed" from="HUD/test_ship_2" to="HUD" method="_on_test_ship_2_pressed"]
+[connection signal="pressed" from="HUD/spawn_base_ship" to="HUD" method="_on_spawn_base_ship_pressed"]

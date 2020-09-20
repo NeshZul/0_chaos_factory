@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/343452__greenvwbeetle__boom-2.wav-c8fc449d48135c37fda60123328f7161.sample"
+
+[deps]
+
+source_file="res://sounds/343452__greenvwbeetle__boom-2.wav"
+dest_files=[ "res://.import/343452__greenvwbeetle__boom-2.wav-c8fc449d48135c37fda60123328f7161.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

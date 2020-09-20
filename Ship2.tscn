@@ -1,0 +1,164 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://Sprites/carrier.png" type="Texture" id=1]
+[ext_resource path="res://Ship2.gd" type="Script" id=2]
+[ext_resource path="res://RayCast2D.gd" type="Script" id=3]
+[ext_resource path="res://sounds/518871__crisheld__laserbeam.wav" type="AudioStream" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 641.29
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0, 0.859259, 1 )
+colors = PoolColorArray( 0.937255, 0.669991, 0, 0.890196, 0.937255, 0.0588235, 0.0588235, 0.219608, 1, 0, 0, 0.235294 )
+
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
+
+[sub_resource type="Curve" id=12]
+_data = [ Vector2( 0, 0.648864 ), 0.0, 0.0, 0, 0, Vector2( 0.98871, 0.921591 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
+
+[sub_resource type="ParticlesMaterial" id=14]
+emission_shape = 2
+emission_box_extents = Vector3( 5.006, 10, 1 )
+flag_disable_z = true
+direction = Vector3( 0, 1, 0 )
+spread = 67.47
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 41.5
+angular_velocity = 30.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 30.0
+scale = 144.93
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
+
+[sub_resource type="Environment" id=3]
+background_mode = 4
+glow_enabled = true
+glow_levels/1 = true
+glow_levels/2 = true
+glow_levels/3 = false
+glow_levels/5 = false
+glow_intensity = 0.63
+glow_strength = 1.58
+glow_blend_mode = 0
+glow_bicubic_upscale = true
+adjustment_brightness = 2.58
+adjustment_contrast = 0.39
+adjustment_saturation = 2.23
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0, 0.985185 )
+colors = PoolColorArray( 0.902271, 1, 0.269531, 1, 0.992157, 0.341176, 0.0117647, 0.596078 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 1
+emission_sphere_radius = 12.26
+flag_disable_z = true
+spread = 180.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 103.45
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 8.0
+scale_random = 1.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+
+[sub_resource type="ParticlesMaterial" id=9]
+emission_shape = 1
+emission_sphere_radius = 6.0
+flag_disable_z = true
+direction = Vector3( -1, 0, 0 )
+spread = 107.07
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 204.02
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 8.0
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+
+[node name="Ship2" type="KinematicBody2D"]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -85.6705, 0 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 1, 0 )
+scale = Vector2( 3, 5 )
+texture = ExtResource( 1 )
+
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( -607.703, -1.78198 )
+rotation = 1.5708
+z_index = -1
+amount = 100
+lifetime = 4.0
+speed_scale = 4.78
+local_coords = false
+process_material = SubResource( 14 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2( 284.566, 0 )
+enabled = true
+cast_to = Vector2( 4000, 0 )
+collide_with_areas = true
+script = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="RayCast2D"]
+
+[node name="Line2D" type="Line2D" parent="RayCast2D"]
+points = PoolVector2Array( 0, 0, 100, 0 )
+width = 5.0
+default_color = Color( 1, 0.184314, 0.184314, 1 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="RayCast2D"]
+environment = SubResource( 3 )
+
+[node name="Cast_start_particles" type="Particles2D" parent="RayCast2D"]
+emitting = false
+amount = 12
+lifetime = 0.5
+process_material = SubResource( 8 )
+
+[node name="Collision_particles" type="Particles2D" parent="RayCast2D"]
+emitting = false
+amount = 12
+lifetime = 0.2
+speed_scale = 5.0
+process_material = SubResource( 9 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="RayCast2D"]
+stream = ExtResource( 4 )
+volume_db = -24.583
+pitch_scale = 0.98
+
+[node name="Timer" type="Timer" parent="RayCast2D"]
+one_shot = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -50.0333, 0 )
+current = true
+zoom = Vector2( 5, 5 )
+
+[node name="Tween" type="Tween" parent="."]
