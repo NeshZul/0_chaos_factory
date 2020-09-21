@@ -1,0 +1,419 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Sprites/inventory/panel_slot.jpg" type="Texture" id=1]
+[ext_resource path="res://Sprites/inventory/panel.jpg" type="Texture" id=2]
+[ext_resource path="res://Sprites/zekton rg.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://slot.gd" type="Script" id=4]
+[ext_resource path="res://inventory_cont.gd" type="Script" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 3 )
+
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 480, 480 )
+
+[sub_resource type="Shader" id=4]
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+
+[sub_resource type="StyleBoxTexture" id=6]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 480, 480 )
+
+[node name="inventory_cont" type="Node2D"]
+script = ExtResource( 5 )
+
+[node name="border" type="TextureRect" parent="."]
+margin_right = 701.0
+margin_bottom = 480.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="slot_back" type="TextureRect" parent="border"]
+margin_left = 15.0
+margin_top = 22.0
+margin_right = 681.0
+margin_bottom = 455.0
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="border/slot_back"]
+margin_right = 452.0
+margin_bottom = 430.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Header" type="HBoxContainer" parent="border/slot_back/VBoxContainer"]
+margin_right = 649.0
+margin_bottom = 43.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuTitle" type="Label" parent="border/slot_back/VBoxContainer/Header"]
+margin_top = 9.0
+margin_right = 613.0
+margin_bottom = 34.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 1 )
+text = " Inventory"
+
+[node name="ExitButton" type="Button" parent="border/slot_back/VBoxContainer/Header"]
+margin_left = 617.0
+margin_right = 649.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 2 )
+text = "X"
+
+[node name="MainElements" type="HBoxContainer" parent="border/slot_back/VBoxContainer"]
+margin_top = 47.0
+margin_right = 649.835
+margin_bottom = 430.0
+rect_min_size = Vector2( 649.835, 383 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Left_side" type="VBoxContainer" parent="border/slot_back/VBoxContainer/MainElements"]
+margin_right = 425.0
+margin_bottom = 383.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="main" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/Left_side"]
+margin_right = 425.0
+margin_bottom = 383.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 3 )
+
+[node name="GridContainer" type="GridContainer" parent="border/slot_back/VBoxContainer/MainElements"]
+material = SubResource( 5 )
+margin_left = 429.0
+margin_right = 649.0
+margin_bottom = 383.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 5
+columns = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_right = 40.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel2" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 45.0
+margin_right = 85.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel3" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 90.0
+margin_right = 130.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel4" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 135.0
+margin_right = 175.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel5" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 180.0
+margin_right = 220.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel6" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_top = 45.0
+margin_right = 40.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel7" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 45.0
+margin_top = 45.0
+margin_right = 85.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel8" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 90.0
+margin_top = 45.0
+margin_right = 130.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel9" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 135.0
+margin_top = 45.0
+margin_right = 175.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel10" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 180.0
+margin_top = 45.0
+margin_right = 220.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel11" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_top = 90.0
+margin_right = 40.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel12" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 45.0
+margin_top = 90.0
+margin_right = 85.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel13" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 90.0
+margin_top = 90.0
+margin_right = 130.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel14" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 135.0
+margin_top = 90.0
+margin_right = 175.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel15" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 180.0
+margin_top = 90.0
+margin_right = 220.0
+margin_bottom = 130.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel16" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_top = 135.0
+margin_right = 40.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel17" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 45.0
+margin_top = 135.0
+margin_right = 85.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel18" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 90.0
+margin_top = 135.0
+margin_right = 130.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel19" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 135.0
+margin_top = 135.0
+margin_right = 175.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel20" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 180.0
+margin_top = 135.0
+margin_right = 220.0
+margin_bottom = 175.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel21" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_top = 180.0
+margin_right = 40.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel22" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 45.0
+margin_top = 180.0
+margin_right = 85.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel23" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 90.0
+margin_top = 180.0
+margin_right = 130.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel24" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 135.0
+margin_top = 180.0
+margin_right = 175.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel25" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 180.0
+margin_top = 180.0
+margin_right = 220.0
+margin_bottom = 220.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel26" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_top = 225.0
+margin_right = 40.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel27" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 45.0
+margin_top = 225.0
+margin_right = 85.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel28" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 90.0
+margin_top = 225.0
+margin_right = 130.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel29" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 135.0
+margin_top = 225.0
+margin_right = 175.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel30" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 180.0
+margin_top = 225.0
+margin_right = 220.0
+margin_bottom = 265.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel31" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_top = 270.0
+margin_right = 40.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel32" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 45.0
+margin_top = 270.0
+margin_right = 85.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel33" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 90.0
+margin_top = 270.0
+margin_right = 130.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel34" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 135.0
+margin_top = 270.0
+margin_right = 175.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
+
+[node name="Panel35" type="Panel" parent="border/slot_back/VBoxContainer/MainElements/GridContainer"]
+margin_left = 180.0
+margin_top = 270.0
+margin_right = 220.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 40, 40 )
+custom_styles/panel = SubResource( 6 )
+script = ExtResource( 4 )
