@@ -7,6 +7,11 @@ func _ready():
 	pass # Replace with function body.
 
 
+func _input(event):
+	if event.is_action_pressed("inventory"):
+		$inventory_cont.visible = !$inventory_cont.visible
+		$inventory_cont.inv_initilaize()
+		
 func _on_delete_pressed():
 	if ship1 != null:
 		ship1.free()
@@ -50,3 +55,9 @@ func _on_rts_camera_onoff_pressed():
 	else:
 		camera.current = false
 		camera._set_state_ZOOM_1()
+
+
+func _on_ship_inventory_pressed():
+			$inventory_cont.visible = !$inventory_cont.visible
+			$inventory_cont.inv_initilaize()
+	

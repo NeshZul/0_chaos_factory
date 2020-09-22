@@ -8,10 +8,10 @@ var item_class = preload("res://item.tscn")
 var item =null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if randi() % 2 == 0:
-		item = item_class.instance()
-		add_child(item)
-		
+#	if randi() % 2 == 0:
+#		item = item_class.instance()
+#		add_child(item)
+	pass
 func _pick_from_slot():
 	remove_child(item)
 	var Inv_node =find_parent("inventory_cont")
@@ -25,6 +25,13 @@ func _put_to_slot(new_item):
 	Inv_node.remove_child(item)
 	add_child(item)
 
+func initilaize_item(item_name, item_quantity):
+	if item == null:
+		item = item_class.instance()
+		add_child(item)
+		item.set_item(item_name, item_quantity)
+	else:
+		item.set_item(item_name, item_quantity)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

@@ -4,6 +4,7 @@ onready var patricles = load("res://explosion.tscn")
 onready var timer =$Timer
 onready var count =$Label
 onready var sound =$AudioStreamPlayer 
+onready var ore = load("res://ItemDrop.tscn")
 var max_hp = 1000
 var current_hp 
 func _process(delta):
@@ -25,6 +26,7 @@ func _on_hit(damage):
 	print(current_hp)
 	
 func _boom():
+	
 	var explosion = patricles.instance()
 	get_parent().add_child(explosion)
 	explosion.position = self.position

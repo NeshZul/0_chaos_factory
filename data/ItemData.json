@@ -1,0 +1,26 @@
+{
+  "crystalum": {
+    "ItemVolume": 10,
+    "ItemMass": 1,
+    "ItemType": "resourse",
+    "ItemStackSize": 10
+  },
+  "keramdit": {
+    "ItemVolume": 1,
+    "ItemMass": 1,
+    "ItemType": "resourse",
+    "ItemStackSize": 100
+  },
+  "tizanit": {
+    "ItemVolume": 1,
+    "ItemMass": 5,
+    "ItemType": "resourse",
+    "ItemStackSize": 100
+  },
+  "urium": {
+    "ItemVolume": 20,
+    "ItemMass": "0.2",
+    "ItemType": "resourse",
+    "ItemStackSize": 50
+  }
+}

@@ -3,10 +3,10 @@ extends Node2D
 const slot_class = preload("res://slot.gd")
 onready var inv_slots =$border/slot_back/VBoxContainer/MainElements/GridContainer
 var hold_item = null
-
 func _ready():
 	for inv_slot in inv_slots.get_children():
 		inv_slot.connect("gui_input", self, "slot_gui_input",[inv_slot])
+		inv_initilaize()
 
 func slot_gui_input(event :InputEvent, slot: slot_class):
 	if event is InputEventMouseButton:
@@ -30,4 +30,13 @@ func _input(event):
 	if hold_item :
 		hold_item.global_position = get_global_mouse_position()
 
+func inv_initilaize():
+	var slots = inv_slots.get_children()
+	for i in range(slots.size()):
+		if Inventory.inventory.has(i):
+			slots[i].initilaize_item(Inventory.inventory[i][0], Inventory.inventory[i] )
+	
 
+
+func _on_ExitButton_pressed():
+	self.visible = false

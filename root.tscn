@@ -6,7 +6,7 @@
 [ext_resource path="res://asteroid.tscn" type="PackedScene" id=4]
 [ext_resource path="res://HUD.gd" type="Script" id=5]
 [ext_resource path="res://inventory_cont.tscn" type="PackedScene" id=6]
-[ext_resource path="res://portal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://ItemDrop.tscn" type="PackedScene" id=7]
 
 [node name="root" type="Node2D"]
 script = ExtResource( 2 )
@@ -52,6 +52,16 @@ margin_top = 14.3448
 margin_right = 148.312
 margin_bottom = 34.3448
 text = "Delete_ship"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ship_inventory" type="Button" parent="HUD"]
+margin_left = 953.891
+margin_top = 27.5943
+margin_right = 1111.89
+margin_bottom = 127.594
+text = "ship_inventory"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -106,12 +116,71 @@ script = ExtResource( 1 )
 
 [node name="Tween" type="Tween" parent="HUD/rts_camera"]
 
-[node name="portal" parent="." instance=ExtResource( 7 )]
-position = Vector2( 806.089, -128.854 )
+[node name="inventory_cont" parent="HUD" instance=ExtResource( 6 )]
+visible = false
+position = Vector2( 266.251, 108.593 )
 
-[node name="inventory_cont" parent="." instance=ExtResource( 6 )]
-position = Vector2( 683.98, 523.384 )
+[node name="ItemDrop" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1227.03, 285.409 )
+
+[node name="ItemDrop2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1527.84, 29.4881 )
+
+[node name="ItemDrop3" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1402.13, 137.244 )
+
+[node name="ItemDrop4" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1188.86, -85.003 )
+
+[node name="ItemDrop5" parent="." instance=ExtResource( 7 )]
+position = Vector2( 955.389, -143.371 )
+
+[node name="ItemDrop6" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1369.89, -13.022 )
+
+[node name="ItemDrop7" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1670.71, -268.943 )
+
+[node name="ItemDrop8" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1545, -161.187 )
+
+[node name="ItemDrop9" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1331.73, -383.434 )
+
+[node name="ItemDrop10" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1098.26, -441.802 )
+
+[node name="ItemDrop11" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1512.76, 193.34 )
+
+[node name="ItemDrop12" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1813.58, -62.5813 )
+
+[node name="ItemDrop13" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1687.86, 45.1751 )
+
+[node name="ItemDrop14" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1474.59, -177.072 )
+
+[node name="ItemDrop15" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1241.12, -235.44 )
+
+[node name="ItemDrop16" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1131.78, 21.9008 )
+
+[node name="ItemDrop17" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1432.6, -234.021 )
+
+[node name="ItemDrop18" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1306.89, -126.264 )
+
+[node name="ItemDrop19" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1093.62, -348.512 )
+
+[node name="ItemDrop20" parent="." instance=ExtResource( 7 )]
+position = Vector2( 860.145, -406.88 )
 [connection signal="pressed" from="HUD/delete" to="HUD" method="_on_delete_pressed"]
+[connection signal="pressed" from="HUD/ship_inventory" to="HUD" method="_on_ship_inventory_pressed"]
 [connection signal="pressed" from="HUD/test_ship" to="HUD" method="_on_test_ship_pressed"]
 [connection signal="pressed" from="HUD/portal" to="." method="_on_portal_pressed"]
 [connection signal="pressed" from="HUD/test_ship_2" to="HUD" method="_on_test_ship_2_pressed"]
